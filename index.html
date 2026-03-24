@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DataPulse | Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__logo">
+      <span class="logo-icon">◈</span>
+      <span class="logo-text">DataPulse</span>
+    </div>
+
+    <nav class="sidebar__nav">
+      <ul>
+        <li class="nav-item active" data-page="overview">
+          <span class="nav-icon">▦</span>
+          <span class="nav-label">Visão Geral</span>
+        </li>
+        <li class="nav-item" data-page="analytics">
+          <span class="nav-icon">◎</span>
+          <span class="nav-label">Análises</span>
+        </li>
+        <li class="nav-item" data-page="services">
+          <span class="nav-icon">⬡</span>
+          <span class="nav-label">Serviços</span>
+        </li>
+        <li class="nav-item" data-page="reports">
+          <span class="nav-icon">◧</span>
+          <span class="nav-label">Relatórios</span>
+        </li>
+        <li class="nav-item" data-page="settings">
+          <span class="nav-icon">◈</span>
+          <span class="nav-label">Configurações</span>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="user-card">
+        <div class="user-avatar">JP</div>
+        <div class="user-info">
+          <span class="user-name">João Paulo</span>
+          <span class="user-role">DevOps Jr.</span>
+        </div>
+        <span class="user-status"></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main" id="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="topbar__title">
+        <h1 id="pageTitle">Visão Geral</h1>
+        <p class="topbar__date" id="currentDate"></p>
+      </div>
+      <div class="topbar__actions">
+        <div class="search-box">
+          <span class="search-icon">⌕</span>
+          <input type="text" placeholder="Buscar..." />
+        </div>
+        <button class="btn-notify" aria-label="Notificações">
+          <span>🔔</span>
+          <span class="badge">3</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- KPI CARDS -->
+      <section class="kpi-grid">
+        <div class="kpi-card" style="--accent: #00f5a0;">
+          <div class="kpi-card__header">
+            <span class="kpi-label">Usuários Ativos</span>
+            <span class="kpi-icon">👥</span>
+          </div>
+          <div class="kpi-card__value" data-target="12847">0</div>
+          <div class="kpi-card__delta positive">▲ 12.4% este mês</div>
+          <div class="kpi-card__bar"><div class="bar-fill" style="width: 72%;"></div></div>
+        </div>
+
+        <div class="kpi-card" style="--accent: #7c6fff;">
+          <div class="kpi-card__header">
+            <span class="kpi-label">Receita Mensal</span>
+            <span class="kpi-icon">💰</span>
+          </div>
+          <div class="kpi-card__value" data-target="84320" data-prefix="R$">R$0</div>
+          <div class="kpi-card__delta positive">▲ 8.1% este mês</div>
+          <div class="kpi-card__bar"><div class="bar-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <div class="kpi-card" style="--accent: #ff6b6b;">
+          <div class="kpi-card__header">
+            <span class="kpi-label">Tickets Abertos</span>
+            <span class="kpi-icon">🎫</span>
+          </div>
+          <div class="kpi-card__value" data-target="247">0</div>
+          <div class="kpi-card__delta negative">▼ 3.2% este mês</div>
+          <div class="kpi-card__bar"><div class="bar-fill" style="width: 38%;"></div></div>
+        </div>
+
+        <div class="kpi-card" style="--accent: #ffd93d;">
+          <div class="kpi-card__header">
+            <span class="kpi-label">Uptime do Sistema</span>
+            <span class="kpi-icon">⚡</span>
+          </div>
+          <div class="kpi-card__value" data-target="99" data-suffix="%">0%</div>
+          <div class="kpi-card__delta positive">▲ Estável</div>
+          <div class="kpi-card__bar"><div class="bar-fill" style="width: 99%;"></div></div>
+        </div>
+      </section>
+
+      <!-- CHARTS ROW -->
+      <section class="charts-row">
+
+        <!-- CHART: Atividade -->
+        <div class="chart-card chart-card--wide">
+          <div class="chart-card__header">
+            <h2>Atividade Semanal</h2>
+            <div class="chart-tabs">
+              <button class="tab active">7d</button>
+              <button class="tab">30d</button>
+              <button class="tab">90d</button>
+            </div>
+          </div>
+          <div class="chart-area">
+            <svg class="line-chart" viewBox="0 0 600 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gradA" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#00f5a0" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#00f5a0" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="gradB" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#7c6fff" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#7c6fff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- Grid lines -->
+              <line x1="0" y1="45" x2="600" y2="45" stroke="#ffffff08" stroke-width="1"/>
+              <line x1="0" y1="90" x2="600" y2="90" stroke="#ffffff08" stroke-width="1"/>
+              <line x1="0" y1="135" x2="600" y2="135" stroke="#ffffff08" stroke-width="1"/>
+              <!-- Area A -->
+              <path class="chart-area-fill" d="M0,120 C60,100 120,60 200,50 C280,40 340,90 420,70 C480,55 540,30 600,20 L600,180 L0,180 Z" fill="url(#gradA)"/>
+              <!-- Area B -->
+              <path class="chart-area-fill" d="M0,140 C60,130 120,110 200,100 C280,90 340,120 420,105 C480,95 540,80 600,70 L600,180 L0,180 Z" fill="url(#gradB)"/>
+              <!-- Line A -->
+              <path class="chart-line chart-line--a" d="M0,120 C60,100 120,60 200,50 C280,40 340,90 420,70 C480,55 540,30 600,20" fill="none" stroke="#00f5a0" stroke-width="2.5"/>
+              <!-- Line B -->
+              <path class="chart-line chart-line--b" d="M0,140 C60,130 120,110 200,100 C280,90 340,120 420,105 C480,95 540,80 600,70" fill="none" stroke="#7c6fff" stroke-width="2.5"/>
+            </svg>
+            <div class="chart-labels">
+              <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+            </div>
+          </div>
+          <div class="chart-legend">
+            <span class="legend-dot" style="background:#00f5a0;"></span> Usuários
+            <span class="legend-dot" style="background:#7c6fff; margin-left:1rem;"></span> Sessões
+          </div>
+        </div>
+
+        <!-- CHART: Distribuição -->
+        <div class="chart-card">
+          <div class="chart-card__header">
+            <h2>Distribuição</h2>
+          </div>
+          <div class="donut-wrap">
+            <svg class="donut-chart" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#ffffff08" stroke-width="18"/>
+              <circle class="donut-seg seg1" cx="60" cy="60" r="50" fill="none" stroke="#00f5a0" stroke-width="18"
+                stroke-dasharray="94.2 220" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+              <circle class="donut-seg seg2" cx="60" cy="60" r="50" fill="none" stroke="#7c6fff" stroke-width="18"
+                stroke-dasharray="75.4 220" stroke-dashoffset="-94.2" transform="rotate(-90 60 60)"/>
+              <circle class="donut-seg seg3" cx="60" cy="60" r="50" fill="none" stroke="#ffd93d" stroke-width="18"
+                stroke-dasharray="44 220" stroke-dashoffset="-169.6" transform="rotate(-90 60 60)"/>
+              <text x="60" y="56" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="Syne">68%</text>
+              <text x="60" y="70" text-anchor="middle" fill="#ffffff60" font-size="7" font-family="DM Mono">conversão</text>
+            </svg>
+          </div>
+          <ul class="donut-legend">
+            <li><span style="background:#00f5a0"></span> Novos — 43%</li>
+            <li><span style="background:#7c6fff"></span> Recorrentes — 35%</li>
+            <li><span style="background:#ffd93d"></span> Inativos — 22%</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <!-- SERVICES CARDS -->
+      <section class="services-section">
+        <div class="section-header">
+          <h2>Status dos Serviços</h2>
+          <a href="#" class="see-all">Ver todos →</a>
+        </div>
+        <div class="services-grid">
+
+          <div class="service-card">
+            <div class="service-card__top">
+              <div class="service-icon" style="--c:#00f5a0">🖥️</div>
+              <span class="service-badge service-badge--ok">Online</span>
+            </div>
+            <h3>API Gateway</h3>
+            <p>Latência média: <strong>42ms</strong></p>
+            <div class="service-bar">
+              <div class="service-bar__fill" style="width:94%; background:#00f5a0;"></div>
+            </div>
+            <span class="service-uptime">99.9% uptime</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-card__top">
+              <div class="service-icon" style="--c:#7c6fff">🗄️</div>
+              <span class="service-badge service-badge--ok">Online</span>
+            </div>
+            <h3>Banco de Dados</h3>
+            <p>Queries/s: <strong>1.240</strong></p>
+            <div class="service-bar">
+              <div class="service-bar__fill" style="width:78%; background:#7c6fff;"></div>
+            </div>
+            <span class="service-uptime">99.7% uptime</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-card__top">
+              <div class="service-icon" style="--c:#ffd93d">☁️</div>
+              <span class="service-badge service-badge--warn">Atenção</span>
+            </div>
+            <h3>CDN / Storage</h3>
+            <p>Uso: <strong>73% do limite</strong></p>
+            <div class="service-bar">
+              <div class="service-bar__fill" style="width:73%; background:#ffd93d;"></div>
+            </div>
+            <span class="service-uptime">98.4% uptime</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-card__top">
+              <div class="service-icon" style="--c:#ff6b6b">🔐</div>
+              <span class="service-badge service-badge--ok">Online</span>
+            </div>
+            <h3>Auth Service</h3>
+            <p>Logins/h: <strong>3.891</strong></p>
+            <div class="service-bar">
+              <div class="service-bar__fill" style="width:88%; background:#ff6b6b;"></div>
+            </div>
+            <span class="service-uptime">100% uptime</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-card__top">
+              <div class="service-icon" style="--c:#00c9ff">📨</div>
+              <span class="service-badge service-badge--ok">Online</span>
+            </div>
+            <h3>Message Queue</h3>
+            <p>Msgs pendentes: <strong>18</strong></p>
+            <div class="service-bar">
+              <div class="service-bar__fill" style="width:12%; background:#00c9ff;"></div>
+            </div>
+            <span class="service-uptime">99.5% uptime</span>
+          </div>
+
+          <div class="service-card">
+            <div class="service-card__top">
+              <div class="service-icon" style="--c:#ff6b6b">📊</div>
+              <span class="service-badge service-badge--error">Offline</span>
+            </div>
+            <h3>Log Aggregator</h3>
+            <p>Último ping: <strong>14min atrás</strong></p>
+            <div class="service-bar">
+              <div class="service-bar__fill" style="width:0%; background:#ff6b6b;"></div>
+            </div>
+            <span class="service-uptime">87.2% uptime</span>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
