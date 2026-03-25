@@ -1,69 +1,111 @@
 # DataPulse — Dashboard
 
-Dashboard web estático com dark mode, pronto para deploy.
+Dashboard de monitoramento web com dark mode, servido via **Nginx dentro de Docker**.
+
+---
 
 ## Estrutura do projeto
 
 ```
-dashboard/
-├── index.html        ← página principal
-├── css/
-│   └── style.css     ← todos os estilos
-├── js/
-│   └── main.js       ← lógica e interações
-└── README.md
+datapulse/
+├── Dockerfile
+├── docker-compose.yml
+├── nginx.conf
+├── .dockerignore
+├── .gitignore
+└── html/
+    ├── index.html
+    ├── style.css
+    └── main.js
 ```
 
-## Como rodar localmente
+---
 
-Basta abrir o `index.html` no navegador. Por ser estático (HTML + CSS + JS puro), **não precisa de servidor, Node.js ou build**.
+## Subir com Docker Compose (recomendado)
 
-Opcionalmente, com o VS Code, use a extensão **Live Server** para hot-reload.
+```bash
+# 1. Build e sobe o container
+docker compose up -d --build
 
-## Deploy
+# 2. Acesse no navegador
+http://localhost:8080
 
-Por ser 100% estático, o projeto pode ser hospedado em:
+# 3. Ver logs
+docker compose logs -f
 
-| Plataforma     | Comando / instrução                          |
-|----------------|----------------------------------------------|
-| **Nginx**      | Copiar pasta para `/var/www/html/`           |
-| **Apache**     | Copiar pasta para `/var/www/html/`           |
-| **GitHub Pages** | Ativar Pages apontando para `main / root` |
-| **Netlify**    | Drag & drop da pasta ou conectar ao repo     |
-| **Vercel**     | `vercel --prod` na raiz do projeto           |
-| **S3 + CloudFront** | Upload dos arquivos + configurar index.html |
-
-## Dependências externas (CDN)
-
-- Google Fonts — `Syne` e `DM Mono`  
-  → Requer conexão com internet. Para ambiente offline, baixe as fontes e ajuste o `<link>` no `index.html`.
-
-## Funcionalidades
-
-- ✅ Sidebar com navegação ativa
-- ✅ Topbar com data dinâmica e busca
-- ✅ 4 KPI cards com contador animado
-- ✅ Gráfico de linha semanal (SVG animado)
-- ✅ Gráfico donut de distribuição
-- ✅ 6 cards de status de serviços
-- ✅ Responsivo (mobile, tablet, desktop)
-- ✅ Sidebar colapsável no mobile
-
-## Personalização rápida
-
-Todas as cores estão em variáveis CSS no topo do `style.css`:
-
-```css
-:root {
-  --bg-base:    #0b0d14;   /* fundo principal */
-  --accent-green:  #00f5a0;
-  --accent-purple: #7c6fff;
-  /* ... */
-}
+# 4. Parar
+docker compose down
 ```
 
-Para trocar dados dos KPI cards, edite os atributos `data-target` no `index.html`:
+---
 
-```html
-<div class="kpi-card__value" data-target="12847">0</div>
+## Subir com Docker puro
+
+```bash
+# Build da imagem
+docker build -t datapulse:latest .
+
+# Rodar o container
+docker run -d \
+  --name datapulse-dashboard \
+  -p 8080:80 \
+  --restart unless-stopped \
+  datapulse:latest
+
+# Verificar se subiu
+docker ps
+
+# Ver logs
+docker logs -f datapulse-dashboard
+
+# Parar e remover
+docker stop datapulse-dashboard && docker rm datapulse-dashboard
 ```
+
+---
+
+## Fluxo Git → Deploy
+
+```bash
+# 1. Iniciar repositório (apenas na primeira vez)
+git init
+git remote add origin https://github.com/seu-usuario/datapulse.git
+
+# 2. Commitar e enviar
+git add .
+git commit -m "feat: dashboard com aba serviços e Docker"
+git push -u origin main
+
+# 3. No servidor — clonar e subir
+git clone https://github.com/seu-usuario/datapulse.git
+cd datapulse
+docker compose up -d --build
+```
+
+---
+
+## Mudar a porta
+
+Edite o `docker-compose.yml`:
+```yaml
+ports:
+  - "3000:80"   # troca 8080 pela porta que quiser
+```
+
+---
+
+## Atualizar o site após mudança de código
+
+```bash
+git pull
+docker compose up -d --build
+```
+
+---
+
+## Notas
+
+- A imagem base é `nginx:alpine` (~25 MB) — leve e segura.
+- Gzip habilitado para CSS e JS.
+- Healthcheck configurado: Docker reinicia o container automaticamente se ele travar.
+- Para ambiente **sem internet** (intranet), as fontes Google Fonts não carregam. Avise para adaptar para fontes do sistema.

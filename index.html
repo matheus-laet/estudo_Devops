@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DataPulse | Dashboard</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -79,219 +79,289 @@
       </div>
     </header>
 
-    <!-- CONTENT -->
-    <div class="content">
+    <!-- ==================== PAGE: VISÃO GERAL ==================== -->
+    <div class="page active" id="page-overview">
+      <div class="content">
 
-      <!-- KPI CARDS -->
-      <section class="kpi-grid">
-        <div class="kpi-card" style="--accent: #00f5a0;">
-          <div class="kpi-card__header">
-            <span class="kpi-label">Usuários Ativos</span>
-            <span class="kpi-icon">👥</span>
+        <section class="kpi-grid">
+          <div class="kpi-card" style="--accent: #00f5a0;">
+            <div class="kpi-card__header">
+              <span class="kpi-label">Usuários Ativos</span>
+              <span class="kpi-icon">👥</span>
+            </div>
+            <div class="kpi-card__value" data-target="12847">0</div>
+            <div class="kpi-card__delta positive">▲ 12.4% este mês</div>
+            <div class="kpi-card__bar"><div class="bar-fill" style="width:72%;"></div></div>
           </div>
-          <div class="kpi-card__value" data-target="12847">0</div>
-          <div class="kpi-card__delta positive">▲ 12.4% este mês</div>
-          <div class="kpi-card__bar"><div class="bar-fill" style="width: 72%;"></div></div>
-        </div>
-
-        <div class="kpi-card" style="--accent: #7c6fff;">
-          <div class="kpi-card__header">
-            <span class="kpi-label">Receita Mensal</span>
-            <span class="kpi-icon">💰</span>
+          <div class="kpi-card" style="--accent: #7c6fff;">
+            <div class="kpi-card__header">
+              <span class="kpi-label">Receita Mensal</span>
+              <span class="kpi-icon">💰</span>
+            </div>
+            <div class="kpi-card__value" data-target="84320" data-prefix="R$">R$0</div>
+            <div class="kpi-card__delta positive">▲ 8.1% este mês</div>
+            <div class="kpi-card__bar"><div class="bar-fill" style="width:85%;"></div></div>
           </div>
-          <div class="kpi-card__value" data-target="84320" data-prefix="R$">R$0</div>
-          <div class="kpi-card__delta positive">▲ 8.1% este mês</div>
-          <div class="kpi-card__bar"><div class="bar-fill" style="width: 85%;"></div></div>
-        </div>
-
-        <div class="kpi-card" style="--accent: #ff6b6b;">
-          <div class="kpi-card__header">
-            <span class="kpi-label">Tickets Abertos</span>
-            <span class="kpi-icon">🎫</span>
+          <div class="kpi-card" style="--accent: #ff6b6b;">
+            <div class="kpi-card__header">
+              <span class="kpi-label">Tickets Abertos</span>
+              <span class="kpi-icon">🎫</span>
+            </div>
+            <div class="kpi-card__value" data-target="247">0</div>
+            <div class="kpi-card__delta negative">▼ 3.2% este mês</div>
+            <div class="kpi-card__bar"><div class="bar-fill" style="width:38%;"></div></div>
           </div>
-          <div class="kpi-card__value" data-target="247">0</div>
-          <div class="kpi-card__delta negative">▼ 3.2% este mês</div>
-          <div class="kpi-card__bar"><div class="bar-fill" style="width: 38%;"></div></div>
-        </div>
-
-        <div class="kpi-card" style="--accent: #ffd93d;">
-          <div class="kpi-card__header">
-            <span class="kpi-label">Uptime do Sistema</span>
-            <span class="kpi-icon">⚡</span>
+          <div class="kpi-card" style="--accent: #ffd93d;">
+            <div class="kpi-card__header">
+              <span class="kpi-label">Uptime do Sistema</span>
+              <span class="kpi-icon">⚡</span>
+            </div>
+            <div class="kpi-card__value" data-target="99" data-suffix="%">0%</div>
+            <div class="kpi-card__delta positive">▲ Estável</div>
+            <div class="kpi-card__bar"><div class="bar-fill" style="width:99%;"></div></div>
           </div>
-          <div class="kpi-card__value" data-target="99" data-suffix="%">0%</div>
-          <div class="kpi-card__delta positive">▲ Estável</div>
-          <div class="kpi-card__bar"><div class="bar-fill" style="width: 99%;"></div></div>
-        </div>
-      </section>
+        </section>
 
-      <!-- CHARTS ROW -->
-      <section class="charts-row">
-
-        <!-- CHART: Atividade -->
-        <div class="chart-card chart-card--wide">
-          <div class="chart-card__header">
-            <h2>Atividade Semanal</h2>
-            <div class="chart-tabs">
-              <button class="tab active">7d</button>
-              <button class="tab">30d</button>
-              <button class="tab">90d</button>
+        <section class="charts-row">
+          <div class="chart-card chart-card--wide">
+            <div class="chart-card__header">
+              <h2>Atividade Semanal</h2>
+              <div class="chart-tabs">
+                <button class="tab active">7d</button>
+                <button class="tab">30d</button>
+                <button class="tab">90d</button>
+              </div>
+            </div>
+            <div class="chart-area">
+              <svg class="line-chart" viewBox="0 0 600 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="gradA" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#00f5a0" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#00f5a0" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="gradB" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#7c6fff" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#7c6fff" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="45" x2="600" y2="45" stroke="#ffffff08" stroke-width="1"/>
+                <line x1="0" y1="90" x2="600" y2="90" stroke="#ffffff08" stroke-width="1"/>
+                <line x1="0" y1="135" x2="600" y2="135" stroke="#ffffff08" stroke-width="1"/>
+                <path class="chart-area-fill" d="M0,120 C60,100 120,60 200,50 C280,40 340,90 420,70 C480,55 540,30 600,20 L600,180 L0,180 Z" fill="url(#gradA)"/>
+                <path class="chart-area-fill" d="M0,140 C60,130 120,110 200,100 C280,90 340,120 420,105 C480,95 540,80 600,70 L600,180 L0,180 Z" fill="url(#gradB)"/>
+                <path class="chart-line chart-line--a" d="M0,120 C60,100 120,60 200,50 C280,40 340,90 420,70 C480,55 540,30 600,20" fill="none" stroke="#00f5a0" stroke-width="2.5"/>
+                <path class="chart-line chart-line--b" d="M0,140 C60,130 120,110 200,100 C280,90 340,120 420,105 C480,95 540,80 600,70" fill="none" stroke="#7c6fff" stroke-width="2.5"/>
+              </svg>
+              <div class="chart-labels">
+                <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+              </div>
+            </div>
+            <div class="chart-legend">
+              <span class="legend-dot" style="background:#00f5a0;"></span> Usuários
+              <span class="legend-dot" style="background:#7c6fff; margin-left:1rem;"></span> Sessões
             </div>
           </div>
-          <div class="chart-area">
-            <svg class="line-chart" viewBox="0 0 600 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gradA" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#00f5a0" stop-opacity="0.3"/>
-                  <stop offset="100%" stop-color="#00f5a0" stop-opacity="0"/>
-                </linearGradient>
-                <linearGradient id="gradB" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#7c6fff" stop-opacity="0.3"/>
-                  <stop offset="100%" stop-color="#7c6fff" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <!-- Grid lines -->
-              <line x1="0" y1="45" x2="600" y2="45" stroke="#ffffff08" stroke-width="1"/>
-              <line x1="0" y1="90" x2="600" y2="90" stroke="#ffffff08" stroke-width="1"/>
-              <line x1="0" y1="135" x2="600" y2="135" stroke="#ffffff08" stroke-width="1"/>
-              <!-- Area A -->
-              <path class="chart-area-fill" d="M0,120 C60,100 120,60 200,50 C280,40 340,90 420,70 C480,55 540,30 600,20 L600,180 L0,180 Z" fill="url(#gradA)"/>
-              <!-- Area B -->
-              <path class="chart-area-fill" d="M0,140 C60,130 120,110 200,100 C280,90 340,120 420,105 C480,95 540,80 600,70 L600,180 L0,180 Z" fill="url(#gradB)"/>
-              <!-- Line A -->
-              <path class="chart-line chart-line--a" d="M0,120 C60,100 120,60 200,50 C280,40 340,90 420,70 C480,55 540,30 600,20" fill="none" stroke="#00f5a0" stroke-width="2.5"/>
-              <!-- Line B -->
-              <path class="chart-line chart-line--b" d="M0,140 C60,130 120,110 200,100 C280,90 340,120 420,105 C480,95 540,80 600,70" fill="none" stroke="#7c6fff" stroke-width="2.5"/>
-            </svg>
-            <div class="chart-labels">
-              <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+
+          <div class="chart-card">
+            <div class="chart-card__header"><h2>Distribuição</h2></div>
+            <div class="donut-wrap">
+              <svg class="donut-chart" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#ffffff08" stroke-width="18"/>
+                <circle class="donut-seg seg1" cx="60" cy="60" r="50" fill="none" stroke="#00f5a0" stroke-width="18"
+                  stroke-dasharray="94.2 220" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+                <circle class="donut-seg seg2" cx="60" cy="60" r="50" fill="none" stroke="#7c6fff" stroke-width="18"
+                  stroke-dasharray="75.4 220" stroke-dashoffset="-94.2" transform="rotate(-90 60 60)"/>
+                <circle class="donut-seg seg3" cx="60" cy="60" r="50" fill="none" stroke="#ffd93d" stroke-width="18"
+                  stroke-dasharray="44 220" stroke-dashoffset="-169.6" transform="rotate(-90 60 60)"/>
+                <text x="60" y="56" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="Syne">68%</text>
+                <text x="60" y="70" text-anchor="middle" fill="#ffffff60" font-size="7" font-family="DM Mono">conversão</text>
+              </svg>
+            </div>
+            <ul class="donut-legend">
+              <li><span style="background:#00f5a0"></span> Novos — 43%</li>
+              <li><span style="background:#7c6fff"></span> Recorrentes — 35%</li>
+              <li><span style="background:#ffd93d"></span> Inativos — 22%</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="services-section">
+          <div class="section-header">
+            <h2>Status dos Serviços</h2>
+            <a href="#" class="see-all" id="goToServices">Ver todos →</a>
+          </div>
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-card__top">
+                <div class="service-icon" style="--c:#00f5a0">🖥️</div>
+                <span class="service-badge service-badge--ok">Online</span>
+              </div>
+              <h3>API Gateway</h3>
+              <p>Latência: <strong>42ms</strong></p>
+              <div class="service-bar"><div class="service-bar__fill" style="width:94%; background:#00f5a0;"></div></div>
+              <span class="service-uptime">99.9% uptime</span>
+            </div>
+            <div class="service-card">
+              <div class="service-card__top">
+                <div class="service-icon" style="--c:#7c6fff">🗄️</div>
+                <span class="service-badge service-badge--ok">Online</span>
+              </div>
+              <h3>Banco de Dados</h3>
+              <p>Queries/s: <strong>1.240</strong></p>
+              <div class="service-bar"><div class="service-bar__fill" style="width:78%; background:#7c6fff;"></div></div>
+              <span class="service-uptime">99.7% uptime</span>
+            </div>
+            <div class="service-card">
+              <div class="service-card__top">
+                <div class="service-icon" style="--c:#ffd93d">☁️</div>
+                <span class="service-badge service-badge--warn">Atenção</span>
+              </div>
+              <h3>CDN / Storage</h3>
+              <p>Uso: <strong>73% do limite</strong></p>
+              <div class="service-bar"><div class="service-bar__fill" style="width:73%; background:#ffd93d;"></div></div>
+              <span class="service-uptime">98.4% uptime</span>
+            </div>
+            <div class="service-card">
+              <div class="service-card__top">
+                <div class="service-icon" style="--c:#ff6b6b">📊</div>
+                <span class="service-badge service-badge--error">Offline</span>
+              </div>
+              <h3>Log Aggregator</h3>
+              <p>Último ping: <strong id="offlinePing">14min atrás</strong></p>
+              <div class="service-bar"><div class="service-bar__fill" style="width:0%; background:#ff6b6b;"></div></div>
+              <span class="service-uptime">87.2% uptime</span>
             </div>
           </div>
-          <div class="chart-legend">
-            <span class="legend-dot" style="background:#00f5a0;"></span> Usuários
-            <span class="legend-dot" style="background:#7c6fff; margin-left:1rem;"></span> Sessões
-          </div>
-        </div>
+        </section>
 
-        <!-- CHART: Distribuição -->
-        <div class="chart-card">
-          <div class="chart-card__header">
-            <h2>Distribuição</h2>
-          </div>
-          <div class="donut-wrap">
-            <svg class="donut-chart" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#ffffff08" stroke-width="18"/>
-              <circle class="donut-seg seg1" cx="60" cy="60" r="50" fill="none" stroke="#00f5a0" stroke-width="18"
-                stroke-dasharray="94.2 220" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
-              <circle class="donut-seg seg2" cx="60" cy="60" r="50" fill="none" stroke="#7c6fff" stroke-width="18"
-                stroke-dasharray="75.4 220" stroke-dashoffset="-94.2" transform="rotate(-90 60 60)"/>
-              <circle class="donut-seg seg3" cx="60" cy="60" r="50" fill="none" stroke="#ffd93d" stroke-width="18"
-                stroke-dasharray="44 220" stroke-dashoffset="-169.6" transform="rotate(-90 60 60)"/>
-              <text x="60" y="56" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="Syne">68%</text>
-              <text x="60" y="70" text-anchor="middle" fill="#ffffff60" font-size="7" font-family="DM Mono">conversão</text>
-            </svg>
-          </div>
-          <ul class="donut-legend">
-            <li><span style="background:#00f5a0"></span> Novos — 43%</li>
-            <li><span style="background:#7c6fff"></span> Recorrentes — 35%</li>
-            <li><span style="background:#ffd93d"></span> Inativos — 22%</li>
-          </ul>
-        </div>
-
-      </section>
-
-      <!-- SERVICES CARDS -->
-      <section class="services-section">
-        <div class="section-header">
-          <h2>Status dos Serviços</h2>
-          <a href="#" class="see-all">Ver todos →</a>
-        </div>
-        <div class="services-grid">
-
-          <div class="service-card">
-            <div class="service-card__top">
-              <div class="service-icon" style="--c:#00f5a0">🖥️</div>
-              <span class="service-badge service-badge--ok">Online</span>
-            </div>
-            <h3>API Gateway</h3>
-            <p>Latência média: <strong>42ms</strong></p>
-            <div class="service-bar">
-              <div class="service-bar__fill" style="width:94%; background:#00f5a0;"></div>
-            </div>
-            <span class="service-uptime">99.9% uptime</span>
-          </div>
-
-          <div class="service-card">
-            <div class="service-card__top">
-              <div class="service-icon" style="--c:#7c6fff">🗄️</div>
-              <span class="service-badge service-badge--ok">Online</span>
-            </div>
-            <h3>Banco de Dados</h3>
-            <p>Queries/s: <strong>1.240</strong></p>
-            <div class="service-bar">
-              <div class="service-bar__fill" style="width:78%; background:#7c6fff;"></div>
-            </div>
-            <span class="service-uptime">99.7% uptime</span>
-          </div>
-
-          <div class="service-card">
-            <div class="service-card__top">
-              <div class="service-icon" style="--c:#ffd93d">☁️</div>
-              <span class="service-badge service-badge--warn">Atenção</span>
-            </div>
-            <h3>CDN / Storage</h3>
-            <p>Uso: <strong>73% do limite</strong></p>
-            <div class="service-bar">
-              <div class="service-bar__fill" style="width:73%; background:#ffd93d;"></div>
-            </div>
-            <span class="service-uptime">98.4% uptime</span>
-          </div>
-
-          <div class="service-card">
-            <div class="service-card__top">
-              <div class="service-icon" style="--c:#ff6b6b">🔐</div>
-              <span class="service-badge service-badge--ok">Online</span>
-            </div>
-            <h3>Auth Service</h3>
-            <p>Logins/h: <strong>3.891</strong></p>
-            <div class="service-bar">
-              <div class="service-bar__fill" style="width:88%; background:#ff6b6b;"></div>
-            </div>
-            <span class="service-uptime">100% uptime</span>
-          </div>
-
-          <div class="service-card">
-            <div class="service-card__top">
-              <div class="service-icon" style="--c:#00c9ff">📨</div>
-              <span class="service-badge service-badge--ok">Online</span>
-            </div>
-            <h3>Message Queue</h3>
-            <p>Msgs pendentes: <strong>18</strong></p>
-            <div class="service-bar">
-              <div class="service-bar__fill" style="width:12%; background:#00c9ff;"></div>
-            </div>
-            <span class="service-uptime">99.5% uptime</span>
-          </div>
-
-          <div class="service-card">
-            <div class="service-card__top">
-              <div class="service-icon" style="--c:#ff6b6b">📊</div>
-              <span class="service-badge service-badge--error">Offline</span>
-            </div>
-            <h3>Log Aggregator</h3>
-            <p>Último ping: <strong>14min atrás</strong></p>
-            <div class="service-bar">
-              <div class="service-bar__fill" style="width:0%; background:#ff6b6b;"></div>
-            </div>
-            <span class="service-uptime">87.2% uptime</span>
-          </div>
-
-        </div>
-      </section>
-
+      </div>
     </div>
+
+    <!-- ==================== PAGE: SERVIÇOS ==================== -->
+    <div class="page" id="page-services">
+      <div class="content">
+
+        <!-- HEADER DA PÁGINA -->
+        <div class="svc-page-header">
+          <div>
+            <p class="svc-page-sub">Monitoramento em tempo real</p>
+          </div>
+          <div class="svc-page-actions">
+            <div class="svc-filter-group">
+              <button class="svc-filter active" data-filter="all">Todos</button>
+              <button class="svc-filter" data-filter="online">Online</button>
+              <button class="svc-filter" data-filter="warning">Atenção</button>
+              <button class="svc-filter" data-filter="offline">Offline</button>
+            </div>
+            <button class="btn-refresh" id="btnRefresh">
+              <span class="refresh-icon">↻</span> Atualizar
+            </button>
+          </div>
+        </div>
+
+        <!-- RESUMO RÁPIDO -->
+        <div class="svc-summary">
+          <div class="svc-summary__item">
+            <span class="svc-sum-dot" style="background:#00f5a0;"></span>
+            <span class="svc-sum-count" id="countOnline">5</span>
+            <span class="svc-sum-label">Online</span>
+          </div>
+          <div class="svc-summary__item">
+            <span class="svc-sum-dot" style="background:#ffd93d;"></span>
+            <span class="svc-sum-count" id="countWarn">1</span>
+            <span class="svc-sum-label">Atenção</span>
+          </div>
+          <div class="svc-summary__item">
+            <span class="svc-sum-dot" style="background:#ff6b6b;"></span>
+            <span class="svc-sum-count" id="countOffline">1</span>
+            <span class="svc-sum-label">Offline</span>
+          </div>
+          <div class="svc-summary__item">
+            <span class="svc-sum-dot" style="background:#7c6fff;"></span>
+            <span class="svc-sum-count">7</span>
+            <span class="svc-sum-label">Total</span>
+          </div>
+        </div>
+
+        <!-- TABELA DE SERVIÇOS -->
+        <div class="svc-table-card">
+          <div class="svc-table-header">
+            <h2>Todos os Serviços</h2>
+            <span class="svc-live-badge">● LIVE</span>
+          </div>
+
+          <div class="svc-table-wrap">
+            <table class="svc-table" id="svcTable">
+              <thead>
+                <tr>
+                  <th>Serviço</th>
+                  <th>Status</th>
+                  <th>Latência</th>
+                  <th>Uptime</th>
+                  <th>Carga</th>
+                  <th>Último Check</th>
+                  <th>Ação</th>
+                </tr>
+              </thead>
+              <tbody id="svcTableBody">
+                <!-- Preenchido via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- CARDS DETALHADOS -->
+        <div class="section-header" style="margin-top:0;">
+          <h2>Detalhes por Serviço</h2>
+        </div>
+        <div class="svc-detail-grid" id="svcDetailGrid">
+          <!-- Preenchido via JS -->
+        </div>
+
+        <!-- MODAL DE DETALHES -->
+        <div class="svc-modal-overlay" id="svcModal">
+          <div class="svc-modal">
+            <div class="svc-modal__header">
+              <div>
+                <h3 id="modalTitle">—</h3>
+                <span id="modalSubtitle" class="svc-modal__sub">—</span>
+              </div>
+              <button class="svc-modal__close" id="modalClose">✕</button>
+            </div>
+            <div class="svc-modal__body" id="modalBody">
+              <!-- preenchido via JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== PAGE: PLACEHOLDER ==================== -->
+    <div class="page" id="page-analytics">
+      <div class="content"><div class="page-placeholder">
+        <span>◎</span>
+        <h2>Análises</h2>
+        <p>Módulo em construção.</p>
+      </div></div>
+    </div>
+    <div class="page" id="page-reports">
+      <div class="content"><div class="page-placeholder">
+        <span>◧</span>
+        <h2>Relatórios</h2>
+        <p>Módulo em construção.</p>
+      </div></div>
+    </div>
+    <div class="page" id="page-settings">
+      <div class="content"><div class="page-placeholder">
+        <span>◈</span>
+        <h2>Configurações</h2>
+        <p>Módulo em construção.</p>
+      </div></div>
+    </div>
+
   </main>
 
-  <script src="js/main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
